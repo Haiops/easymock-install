@@ -1,0 +1,32 @@
+* 搭建mock server 服务 （easy-mock）**
+1.通过github官方文档：https://github.com/easy-mock/easy-mock-docker 里面有详细的解释。
+
+2.安装git命令，直接yum安装即可。 (yum install -y git)
+
+3.将github中的文档直接git clone下来。
+
+4.此次安装是用docker的方式安装的，需要安装docker，并启动docker。
+
+5.在默认的docker配置文件中根据自己的需要修改配置文件的目录，配置文件只改蓝色备注的配置即可。
+
+6.由于安装中出现了error，个人自定义了一个安装目录和配置文件production.json创建配置文件。 sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose;chmod u+x /usr/local/bin/docker-compose; 7.修改完之后到默认的docker目录下去执行命令启动：启动：docker-compose up -d
+
+8.执行此命令可能会因为系统环境的问题或Python的版本问题出现error。（需见报错进行解决）
+
+9.执行此命令会下mongoDB/redis/npm/web服务器等待下载完。
+
+10.在easy-docker目录下通过命令:docker-compose up -d 直接启动服务 通过小记中的命令相继查看启动日志以及进程。
+
+此安装中出现的error是web服务器的npm 日志写入权限的问题。（ chomd -R 755 logs ）
+
+小记: docker关于安装此服务的相关command（默认要在easy-docker目录下执行）
+
+docker-compose logs -f 查看日志
+
+docker-compose up -d 启动
+
+docker-compose down 关闭
+
+docker ps -a |grep web 查web进程
+
+docker-compose ps 查看docker启动的进程
